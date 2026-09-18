@@ -1,8 +1,9 @@
 {
   "name": "Girls Challenge",
-  "short_name": "Girls Challenge",
+  "short_name": "Girls",
   "description": "Sorteio das Girls do CrossFit.",
   "start_url": "/girls-challenge/",
+  "scope": "/girls-challenge/",
   "display": "standalone",
   "background_color": "#121010",
   "theme_color": "#121010",
