@@ -1,0 +1,486 @@
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #111;
+    color: #f5f5f5;
+    overflow-x: hidden;
+}
+
+
+/* ========================================
+   VARIÁVEIS
+======================================== */
+
+:root {
+    --accent: #f84242;
+}
+
+
+/* ========================================
+   APP
+======================================== */
+
+.app {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.2)
+        ),
+        #111;
+}
+
+.screen {
+    width: 100%;
+    max-width: 600px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 20px 24px;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.app-header {
+    text-align: center;
+}
+
+.app-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.app-label,
+h1,
+.draw-button,
+.result-label,
+.copy-button {
+    font-family: "Oswald", sans-serif;
+}
+
+.app-header h1 {
+    color: var(--accent);
+    font-size: clamp(2rem, 10vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 0.9;
+}
+
+
+/* ========================================
+   DRAW AREA
+======================================== */
+
+.draw-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+/* ========================================
+   TIMER
+======================================== */
+
+.timer-container {
+    position: relative;
+    width: min(78vw, 340px);
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.progress-ring svg {
+    width: 100%;
+    height: 100%;
+}
+
+.progress-ring circle {
+    fill: none;
+    stroke-width: 5;
+}
+
+.progress-ring-background {
+    stroke: #292929;
+}
+
+.progress-ring-progress {
+    stroke: var(--accent);
+    stroke-linecap: round;
+
+    /*
+       Circunferência aproximada para r = 90:
+
+       2 × π × 90 ≈ 565
+    */
+
+    stroke-dasharray: 565;
+    stroke-dashoffset: 565;
+
+    transition: stroke-dashoffset 0.1s linear;
+}
+
+.timer-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.timer {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(4rem, 22vw, 8rem);
+    font-weight: 600;
+    line-height: 0.8;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.draw-status {
+    margin-top: 18px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    color: #888;
+}
+
+
+/* ========================================
+   RESULTADO
+======================================== */
+
+.result-container {
+    display: none;
+    width: 100%;
+    text-align: center;
+}
+
+.result-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.22em;
+    color: #888;
+    margin-bottom: 12px;
+}
+
+.girl-name {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(4rem, 18vw, 8rem);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.wod-details {
+    margin-top: 28px;
+}
+
+.wod-type {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    color: #888;
+    margin-bottom: 12px;
+}
+
+.wod-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.wod-list li {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+
+/* ========================================
+   BOTÃO COPIAR
+======================================== */
+
+.copy-button {
+    margin-top: 28px;
+    min-height: 30px;
+    padding: 0 22px;
+
+    border: 1px solid #444;
+    border-radius: 4px;
+
+    background: transparent;
+    color: #f5f5f5;
+
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.1s ease;
+}
+
+.copy-button:hover {
+    background: #222;
+    border-color: #666;
+}
+
+.copy-button:active {
+    transform: scale(0.97);
+}
+
+
+/* ========================================
+   ÁREA DE AÇÃO
+======================================== */
+
+.action-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.draw-button {
+    width: 100%;
+    max-width: 360px;
+    min-height: 64px;
+
+    border: 0;
+    border-radius: 4px;
+
+    background: #f5f5f5;
+    color: #111;
+
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.1s ease,
+        background 0.2s ease;
+}
+
+.draw-button:hover {
+    background: #fff;
+}
+
+.draw-button:active {
+    transform: scale(0.97);
+}
+
+
+/* ========================================
+   ESTADOS
+======================================== */
+
+/*
+   Enquanto estiver sorteando,
+   o botão fica indisponível.
+*/
+
+.draw-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+
+/*
+   Estado de sorteio.
+
+   O JS adiciona .is-drawing
+   à tela.
+*/
+
+.is-drawing .draw-button {
+    opacity: 0.4;
+}
+
+.is-drawing .timer-container {
+    animation: timerPulse 1s ease-in-out infinite;
+}
+
+
+/*
+   Resultado.
+*/
+
+.show-result .timer-container {
+    display: none;
+}
+
+.show-result .result-container {
+    display: block;
+}
+
+
+/* ========================================
+   ANIMAÇÕES
+======================================== */
+
+@keyframes timerPulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/*
+   Entrada do resultado.
+*/
+
+.show-result .result-container {
+    animation: resultReveal 0.6s ease-out both;
+}
+
+@keyframes resultReveal {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.75);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ========================================
+   IMPACTO DO RESULTADO
+======================================== */
+
+/*
+   Momento em que o 00:00
+   vira o nome da Girl.
+*/
+
+.timer-container.reveal-name .timer {
+    animation: resultImpact 0.6s ease forwards;
+}
+
+@keyframes resultImpact {
+
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    35% {
+        transform: scale(1.18);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/*
+   Nome da Girl dentro do timer.
+*/
+
+.timer.girl-result {
+    color: #f84242;
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+}
+
+
+/* ========================================
+   TELAS MAIORES
+======================================== */
+
+@media (min-width: 600px) {
+
+    .screen {
+        padding: 40px 32px 32px;
+    }
+
+    .draw-button {
+        min-height: 68px;
+    }
+}

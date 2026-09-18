@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Faltou?</title>
+    <meta name="description" content="Sorteio de Girls como punição para quem faltar ao treino.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    </head>
+
+<body>
+
+    <main class="app">
+
+        <!-- Tela principal -->
+        <section class="screen" id="main-screen">
+
+            <header class="app-header">
+                <span class="app-label">GIRLS CHALLENGE</span>
+                <h1>FALTOU?</h1>
+            </header>
+
+            <!-- Área do sorteio -->
+            <div class="draw-area">
+
+                <!-- Timer -->
+                <div class="timer-container" id="timer-container">
+
+                    <div class="progress-ring" aria-hidden="true">
+                        <svg viewBox="0 0 200 200">
+                            <circle
+                                class="progress-ring-background"
+                                cx="100"
+                                cy="100"
+                                r="90"
+                            ></circle>
+
+                            <circle
+                                class="progress-ring-progress"
+                                id="progress-ring"
+                                cx="100"
+                                cy="100"
+                                r="90"
+                            ></circle>
+                        </svg>
+                    </div>
+
+                    <div class="timer-content">
+                        <span class="timer" id="timer">00:00</span>
+                        <span class="draw-status" id="draw-status">
+                            PRONTO?
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- Resultado -->
+                <div class="result-container" id="result-container">
+
+                    <span class="result-label">A PUNIÇÃO É</span>
+
+                    <h2 class="girl-name" id="girl-name">
+                        MURPH
+                    </h2>
+
+                    <div class="wod-details" id="wod-details">
+
+                        <span class="wod-type" id="wod-type">
+                            FOR TIME
+                        </span>
+
+                        <ul class="wod-list" id="wod-list">
+                            <!-- Os movimentos serão inseridos pelo JavaScript -->
+                        </ul>
+
+                    </div>
+
+                    <button
+                        class="copy-button"
+                        id="copy-button"
+                        type="button"
+                    >
+                        COPIAR RESULTADO
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Ação principal -->
+            <div class="action-area">
+
+                <button
+                    class="draw-button"
+                    id="draw-button"
+                    type="button"
+                >
+                    SORTEAR
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+  
+<script src="data/girls.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
+
