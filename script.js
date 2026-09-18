@@ -185,6 +185,45 @@ function updateProgress(elapsed) {
 
     progressRing.style.strokeDashoffset =
         offset;
+
+
+    /* ========================================
+       COR DO RING
+       Cinza → Laranja
+    ======================================== */
+
+    const startColor = {
+        r: 80,
+        g: 80,
+        b: 80
+    };
+
+    const endColor = {
+        r: 255,
+        g: 77,
+        b: 28
+    };
+
+    const r =
+        Math.round(
+            startColor.r +
+            (endColor.r - startColor.r) * progress
+        );
+
+    const g =
+        Math.round(
+            startColor.g +
+            (endColor.g - startColor.g) * progress
+        );
+
+    const b =
+        Math.round(
+            startColor.b +
+            (endColor.b - startColor.b) * progress
+        );
+
+    progressRing.style.stroke =
+        `rgb(${r}, ${g}, ${b})`;
 }
 
 
