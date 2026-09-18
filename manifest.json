@@ -1,0 +1,21 @@
+{
+  "name": "Girls Challenge",
+  "short_name": "Girls Challenge",
+  "description": "Sorteio das Girls do CrossFit.",
+  "start_url": "/girls-challenge/",
+  "display": "standalone",
+  "background_color": "#121010",
+  "theme_color": "#121010",
+  "icons": [
+    {
+      "src": "/girls-challenge/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/girls-challenge/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
