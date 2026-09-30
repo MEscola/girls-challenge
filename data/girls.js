@@ -1,22 +1,39 @@
+const pullUpAdaptations = [
+    "Ring Rows",
+    "Pull-up com band (elástico)",
+    "Jumping Pull-ups(com caixa)"
+];
+
+const pushUpAdaptations = [
+    "Push-ups com apoio"
+];
+
 const girls = [
-    {
-        name: "ANGIE",
-        wod: {
-            type: "FOR TIME",
-            description: [
-                "100 Pull-ups",
-                "100 Push-ups",
-                "100 Sit-ups",
-                "100 Air Squats"
-            ]
-        },
-        movements: [
-            "pull_up",
-            "push_up",
-            "sit_up",
-            "air_squat"
-        ]
-    },
+    // {
+    //     name: "ANGIE",
+    //     wod: {
+    //         type: "FOR TIME",
+    //         description: [
+    //             "100 Pull-ups",
+    //             "100 Push-ups",
+    //             "100 Sit-ups",
+    //             "100 Air Squats"
+    //         ]
+    //     },
+    //     movements: [
+    //         "pull_up",
+    //         "push_up",
+    //         "sit_up",
+    //         "air_squat"
+    //     ],
+    //     adaptations: {
+    //         time: [],
+    //         movements: {
+    //             pull_up: pullUpAdaptations,
+    //             push_up: pushUpAdaptations
+    //         }
+    //     }
+    // },
 
     {
         name: "ANNIE",
@@ -31,7 +48,15 @@ const girls = [
         movements: [
             "double_under",
             "sit_up"
-        ]
+        ],
+        adaptations: {
+            time: [],
+            movements: {
+                double_under: [
+                    "Single Unders"
+                ]
+            }
+        }
     },
 
     {
@@ -51,7 +76,17 @@ const girls = [
             "push_up",
             "sit_up",
             "air_squat"
-        ]
+        ],
+        adaptations: {
+            time: [
+                "3 rounds",
+                "4 rounds"
+            ],
+            movements: {
+                pull_up: pullUpAdaptations,
+                push_up: pushUpAdaptations
+            }
+        }
     },
 
     {
@@ -68,7 +103,18 @@ const girls = [
             "pull_up",
             "push_up",
             "air_squat"
-        ]
+        ],
+        adaptations: {
+            time: [
+                "AMRAP 10 min",
+                "AMRAP 12 min",
+                "AMRAP 15 min"
+            ],
+            movements: {
+                pull_up: pullUpAdaptations,
+                push_up: pushUpAdaptations
+            }
+        }
     },
 
     {
@@ -83,7 +129,16 @@ const girls = [
         movements: [
             "deadlift",
             "handstand_push_up"
-        ]
+        ],
+        adaptations: {
+            time: [],
+            movements: {
+                handstand_push_up: [
+                    "DB Shoulder Press",
+                    "Push-ups"
+                ]
+            }
+        }
     },
 
     {
@@ -98,7 +153,16 @@ const girls = [
         movements: [
             "clean",
             "ring_dip"
-        ]
+        ],
+        adaptations: {
+            time: [],
+            movements: {
+                ring_dip: [
+                    "Bench Dips",
+                    "Push-ups"
+                ]
+            }
+        }
     },
 
     {
@@ -106,14 +170,20 @@ const girls = [
         wod: {
             type: "21-15-9",
             description: [
-                "Thrusters",
+                "Thrusters 💀",
                 "Pull-ups"
             ]
         },
         movements: [
             "thruster",
             "pull_up"
-        ]
+        ],
+        adaptations: {
+            time: [],
+            movements: {
+                pull_up: pullUpAdaptations
+            }
+        }
     },
 
     {
@@ -126,7 +196,13 @@ const girls = [
         },
         movements: [
             "clean_and_jerk"
-        ]
+        ],
+        adaptations: {
+            time: [
+                "20 Clean & Jerks"
+            ],
+            movements: {}
+        }
     },
 
     {
@@ -143,7 +219,17 @@ const girls = [
             "running",
             "kettlebell_swing",
             "pull_up"
-        ]
+        ],
+        adaptations: {
+            time: [
+                "AMRAP 10 min",
+                "AMRAP 12 min",
+                "AMRAP 15 min"
+            ],
+            movements: {
+                pull_up: pullUpAdaptations
+            }
+        }
     },
 
     {
@@ -156,7 +242,13 @@ const girls = [
         },
         movements: [
             "snatch"
-        ]
+        ],
+        adaptations: {
+            time: [
+                "20 Snatches"
+            ],
+            movements: {}
+        }
     },
 
     {
@@ -165,7 +257,7 @@ const girls = [
             type: "FOR TIME",
             description: [
                 "1000m Row",
-                "50 Thrusters",
+                "50 Thrusters 💀",
                 "30 Pull-ups"
             ]
         },
@@ -173,7 +265,17 @@ const girls = [
             "rowing",
             "thruster",
             "pull_up"
-        ]
+        ],
+        adaptations: {
+            time: [],
+            movements: {
+                row: [
+                    "Air Bike - 3 min",
+                    "Corrida - 800m"
+                ],
+                pull_up: pullUpAdaptations
+            }
+        }
     },
 
     {
@@ -186,7 +288,13 @@ const girls = [
         },
         movements: [
             "wall_ball"
-        ]
+        ],
+        adaptations: {
+            time: [
+                "100 Wall Balls"
+            ],
+            movements: {}
+        }
     },
 
     {
@@ -203,7 +311,16 @@ const girls = [
             "running",
             "box_jump",
             "wall_ball"
-        ]
+        ],
+        adaptations: {
+            time: [
+                "3 rounds",
+                "AMRAP 10 min",
+                "AMRAP 12 min",
+                "AMRAP 15 min"
+            ],
+            movements: {}
+        }
     },
 
     {
@@ -221,7 +338,11 @@ const girls = [
             "deadlift",
             "bench_press",
             "clean"
-        ]
+        ],
+        adaptations: {
+            time: [],
+            movements: {}
+        }
     },
 
     {
@@ -238,7 +359,25 @@ const girls = [
             "handstand_push_up",
             "pistol",
             "pull_up"
-        ]
+        ],
+        adaptations: {
+            time: [
+                "AMRAP 10 min",
+                "AMRAP 12 min",
+                "AMRAP 15 min"
+            ],
+            movements: {
+                handstand_push_up: [
+                    "DB Shoulder Press",
+                    "Push-ups"
+                ],
+                pistol: [
+                    "Air Squats",
+                    "Box Squats"
+                ],
+                pull_up: pullUpAdaptations
+            }
+        }
     },
 
     {
@@ -253,7 +392,16 @@ const girls = [
         movements: [
             "running",
             "overhead_squat"
-        ]
+        ],
+        adaptations: {
+            time: [
+                "3 rounds",
+                "AMRAP 10 min",
+                "AMRAP 12 min",
+                "AMRAP 15 min"
+            ],
+            movements: {}
+        }
     },
 
     {
@@ -270,7 +418,13 @@ const girls = [
             "clean",
             "front_squat",
             "pull_up"
-        ]
+        ],
+        adaptations: {
+            time: [],
+            movements: {
+                pull_up: pullUpAdaptations
+            }
+        }
     },
 
     {
@@ -287,7 +441,18 @@ const girls = [
             "ghd_sit_up",
             "back_extension",
             "kettlebell_swing"
-        ]
+        ],
+        adaptations: {
+            time: [],
+            movements: {
+                ghd_sit_up: [
+                    "Sit-ups"
+                ],
+                back_extension: [
+                    "Superman"
+                ]
+            }
+        }
     },
 
     {
@@ -306,6 +471,13 @@ const girls = [
             "push_up",
             "sit_up",
             "air_squat"
-        ]
+        ],
+        adaptations: {
+            time: [],
+            movements: {
+                pull_up: pullUpAdaptations,
+                push_up: pushUpAdaptations
+            }
+        }
     }
 ];

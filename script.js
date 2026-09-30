@@ -21,6 +21,26 @@ const copyButton = document.getElementById("copy-button");
 
 
 /* ========================================
+   ELEMENTOS DAS ADAPTAÇÕES
+======================================== */
+
+const adaptationsButton =
+    document.getElementById("adaptations-button");
+
+const adaptationsModal =
+    document.getElementById("adaptations-modal");
+
+const adaptationsOverlay =
+    document.getElementById("adaptations-overlay");
+
+const adaptationsClose =
+    document.getElementById("adaptations-close");
+
+const adaptationsContent =
+    document.getElementById("adaptations-content");
+
+
+/* ========================================
    CONFIGURAÇÕES
 ======================================== */
 
@@ -48,6 +68,26 @@ progressRing.style.strokeDashoffset = CIRCLE_LENGTH;
 drawButton.addEventListener("click", handleDrawButton);
 copyButton.addEventListener("click", copyResult);
 
+adaptationsButton.addEventListener(
+    "click",
+    openAdaptations
+);
+
+adaptationsClose.addEventListener(
+    "click",
+    closeAdaptations
+);
+
+adaptationsOverlay.addEventListener(
+    "click",
+    closeAdaptations
+);
+
+document.addEventListener(
+    "keydown",
+    handleModalKeydown
+);
+
 
 /* ========================================
    BOTÃO PRINCIPAL
@@ -66,6 +106,9 @@ function handleDrawButton() {
     if (screen.classList.contains("show-result")) {
         screen.classList.remove("show-result");
     }
+
+    // Garante que o modal esteja fechado
+    closeAdaptations();
 
     startDraw();
 }
@@ -292,17 +335,20 @@ function drawGirl() {
     return availableGirls[randomIndex];
 }
 
+
 /* ========================================
    AJUSTAR TAMANHO DO NOME
 ======================================== */
 
 function adjustGirlNameSize() {
 
-    const availableWidth = timerContainer.clientWidth * 0.40;
+    const availableWidth =
+        timerContainer.clientWidth * 0.40;
 
     timer.style.fontSize = "6rem";
 
-    const textWidth = timer.scrollWidth;
+    const textWidth =
+        timer.scrollWidth;
 
     if (textWidth > availableWidth) {
 
@@ -318,6 +364,7 @@ function adjustGirlNameSize() {
             `${currentSize * scale}px`;
     }
 }
+
 
 /* ========================================
    MOSTRAR RESULTADO
@@ -351,6 +398,9 @@ function showResult(girl) {
         wodList.appendChild(listItem);
     });
 
+    // Prepara as adaptações
+    setupAdaptations(girl);
+
     // Mostra o resultado
     screen.classList.add("show-result");
 
@@ -367,6 +417,256 @@ function showResult(girl) {
     // Agora ele permite outro sorteio
     drawButton.textContent =
         "NOVO SORTEIO";
+}
+
+
+/* ========================================
+   PREPARAR ADAPTAÇÕES
+======================================== */
+
+function setupAdaptations(girl) {
+
+    // Limpa o conteúdo anterior
+    adaptationsContent.innerHTML = "";
+
+    const adaptations =
+        girl.adaptations;
+
+    // Se não houver adaptações,
+    // esconde o botão.
+    if (
+        !adaptations ||
+        (
+            (!adaptations.time ||
+                adaptations.time.length === 0) &&
+            (!adaptations.movements ||
+                Object.keys(adaptations.movements).length === 0)
+        )
+    ) {
+        adaptationsButton.hidden = true;
+        return;
+    }
+
+    // Existe pelo menos uma adaptação
+    adaptationsButton.hidden = false;
+
+    /*
+       ADAPTAÇÕES DE TEMPO
+    */
+
+    if (
+        adaptations.time &&
+        adaptations.time.length > 0
+    ) {
+
+        const section =
+            createAdaptationSection(
+                "TEMPO / VOLUME",
+                adaptations.time
+            );
+
+        adaptationsContent.appendChild(section);
+    }
+
+
+    /*
+       ADAPTAÇÕES DE MOVIMENTO
+    */
+
+    if (
+        adaptations.movements &&
+        Object.keys(adaptations.movements).length > 0
+    ) {
+
+        Object.entries(adaptations.movements)
+            .forEach(([movement, options]) => {
+
+                if (!options || options.length === 0) {
+                    return;
+                }
+
+                const title =
+                    formatMovementName(movement);
+
+                const section =
+                    createAdaptationSection(
+                        title,
+                        options
+                    );
+
+                adaptationsContent.appendChild(section);
+            });
+    }
+}
+
+
+/* ========================================
+   CRIAR SEÇÃO DE ADAPTAÇÃO
+======================================== */
+
+function createAdaptationSection(title, options) {
+
+    const section =
+        document.createElement("section");
+
+    section.className =
+        "adaptation-section";
+
+
+    const heading =
+        document.createElement("span");
+
+    heading.className =
+        "adaptation-title";
+
+    heading.textContent =
+        title;
+
+
+    const list =
+        document.createElement("ul");
+
+    list.className =
+        "adaptation-options";
+
+
+    options.forEach(option => {
+
+        const item =
+            document.createElement("li");
+
+        item.textContent =
+            option;
+
+        list.appendChild(item);
+    });
+
+
+    section.appendChild(heading);
+    section.appendChild(list);
+
+    return section;
+}
+
+
+/* ========================================
+   FORMATAR NOME DO MOVIMENTO
+======================================== */
+
+function formatMovementName(movement) {
+
+    const names = {
+
+        pull_up: "PULL-UPS",
+
+        push_up: "PUSH-UPS",
+
+        sit_up: "SIT-UPS",
+
+        air_squat: "AIR SQUATS",
+
+        double_under: "DOUBLE UNDERS",
+
+        deadlift: "DEADLIFT",
+
+        handstand_push_up: "HANDSTAND PUSH-UPS",
+
+        clean: "CLEANS",
+
+        ring_dip: "RING DIPS",
+
+        thruster: "THRUSTERS",
+
+        clean_and_jerk: "CLEAN & JERKS",
+
+        running: "RUN",
+
+        kettlebell_swing: "KETTLEBELL SWINGS",
+
+        snatch: "SNATCHES",
+
+        rowing: "ROW",
+
+        wall_ball: "WALL BALLS",
+
+        box_jump: "BOX JUMPS",
+
+        bench_press: "BENCH PRESS",
+
+        pistol: "PISTOLS",
+
+        overhead_squat: "OVERHEAD SQUATS",
+
+        front_squat: "FRONT SQUATS",
+
+        ghd_sit_up: "GHD SIT-UPS",
+
+        back_extension: "BACK EXTENSIONS"
+    };
+
+    return (
+        names[movement] ||
+        movement
+            .replaceAll("_", " ")
+            .toUpperCase()
+    );
+}
+
+
+/* ========================================
+   ABRIR ADAPTAÇÕES
+======================================== */
+
+function openAdaptations() {
+
+    if (!selectedGirl) {
+        return;
+    }
+
+    adaptationsModal.hidden = false;
+
+    adaptationsButton.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+    document.body.classList.add("modal-open");
+
+    adaptationsClose.focus();
+}
+
+
+/* ========================================
+   FECHAR ADAPTAÇÕES
+======================================== */
+
+function closeAdaptations() {
+
+    adaptationsModal.hidden = true;
+
+    adaptationsButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    document.body.classList.remove("modal-open");
+}
+
+
+/* ========================================
+   TECLA ESC
+======================================== */
+
+function handleModalKeydown(event) {
+
+    if (
+        event.key === "Escape" &&
+        !adaptationsModal.hidden
+    ) {
+        closeAdaptations();
+
+        adaptationsButton.focus();
+    }
 }
 
 
@@ -451,6 +751,15 @@ function resetInterface() {
     timer.classList.remove("girl-result");
     timerContainer.classList.remove("reveal-name");
 
+    // Fecha o modal
+    closeAdaptations();
+
+    // Mostra novamente o botão de adaptações
+    adaptationsButton.hidden = false;
+
+    // Limpa o conteúdo das adaptações
+    adaptationsContent.innerHTML = "";
+
     // Timer
     timer.textContent =
         "00:04";
@@ -471,5 +780,3 @@ function resetInterface() {
     drawButton.textContent =
         "FALTOU?";
 }
-
-

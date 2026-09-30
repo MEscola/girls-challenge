@@ -7,24 +7,39 @@
     <title>Girls Challenge</title>
 
     <!-- SEO -->
-    <meta name="description" content="Girls Challenge: sorteie uma Girl e descubra o WOD da sua punição.">
+    <meta
+        name="description"
+        content="Girls Challenge: sorteie uma Girl e descubra o WOD da sua punição."
+    >
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Girls Challenge">
-    <meta property="og:description" content="Faltou ao treino? Faça o sorteio e descubra qual Girl será sua punição.">
-    <meta property="og:url" content="https://mescola.github.io/girls-challenge/">
+    <meta
+        property="og:description"
+        content="Faltou ao treino? Faça o sorteio e descubra qual Girl será sua punição."
+    >
+    <meta
+        property="og:url"
+        content="https://mescola.github.io/girls-challenge/"
+    >
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Girls Challenge">
-    <meta property="og:image" content="https://mescola.github.io/girls-challenge/assets/og-image.png">
+    <meta
+        property="og:image"
+        content="https://mescola.github.io/girls-challenge/assets/og-image.png"
+    >
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
@@ -36,8 +51,14 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Girls Challenge">
-    <meta name="twitter:description" content="Faltou ao treino? Faça o sorteio e descubra qual Girl será sua punição.">
-    <meta name="twitter:image" content="https://mescola.github.io/girls-challenge/assets/og-image.png">
+    <meta
+        name="twitter:description"
+        content="Faltou ao treino? Faça o sorteio e descubra qual Girl será sua punição."
+    >
+    <meta
+        name="twitter:image"
+        content="https://mescola.github.io/girls-challenge/assets/og-image.png"
+    >
 </head>
 
 <body>
@@ -47,7 +68,7 @@
         <!-- Tela principal -->
         <section class="screen" id="main-screen">
 
-            <a href="regras.html" class="rules-link"> REGRAS </a>
+            <a href="regras.html" class="rules-link">REGRAS</a>
 
             <header class="app-header">
                 <span class="app-label">GIRLS CHALLENGE</span>
@@ -62,6 +83,7 @@
 
                     <div class="progress-ring" aria-hidden="true">
                         <svg viewBox="0 0 200 200">
+
                             <circle
                                 class="progress-ring-background"
                                 cx="100"
@@ -76,14 +98,20 @@
                                 cy="100"
                                 r="90"
                             ></circle>
+
                         </svg>
                     </div>
 
                     <div class="timer-content">
-                        <span class="timer" id="timer">00:00</span>
+
+                        <span class="timer" id="timer">
+                            00:00
+                        </span>
+
                         <span class="draw-status" id="draw-status">
                             PRONTO?
                         </span>
+
                     </div>
 
                 </div>
@@ -91,17 +119,15 @@
                 <!-- Resultado -->
                 <div class="result-container" id="result-container">
 
-                    <span class="result-label"> A PUNIÇÃO É</span>
+                    <span class="result-label">
+                        A PUNIÇÃO É
+                    </span>
 
-                    <h2 class="girl-name" id="girl-name">
-                        MURPH
-                    </h2>
+                    <h2 class="girl-name" id="girl-name"></h2>
 
                     <div class="wod-details" id="wod-details">
 
-                        <span class="wod-type" id="wod-type">
-                            FOR TIME
-                        </span>
+                        <span class="wod-type" id="wod-type"></span>
 
                         <ul class="wod-list" id="wod-list">
                             <!-- Os movimentos serão inseridos pelo JavaScript -->
@@ -109,13 +135,28 @@
 
                     </div>
 
-                    <button
-                        class="copy-button"
-                        id="copy-button"
-                        type="button"
-                    >
-                        COPIAR RESULTADO
-                    </button>
+                    <!-- Ações do resultado -->
+                    <div class="result-actions">
+
+                        <button
+                            class="adaptations-button"
+                            id="adaptations-button"
+                            type="button"
+                            aria-expanded="false"
+                            aria-controls="adaptations-modal"
+                        >
+                            ADAPTAÇÕES
+                        </button>
+
+                        <button
+                            class="copy-button"
+                            id="copy-button"
+                            type="button"
+                        >
+                            COPIAR RESULTADO
+                        </button>
+
+                    </div>
 
                 </div>
 
@@ -136,13 +177,56 @@
 
         </section>
 
-        
+
+        <!-- Modal de adaptações -->
+        <div
+            class="adaptations-modal"
+            id="adaptations-modal"
+            hidden
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="adaptations-title"
+        >
+
+            <div
+                class="adaptations-overlay"
+                id="adaptations-overlay"
+            ></div>
+
+            <div class="adaptations-panel">
+
+                <div class="adaptations-header">
+
+                    <h2 id="adaptations-title">
+                       ADAPTAÇÕES
+                    </h2>
+
+                    <button
+                        class="adaptations-close"
+                        id="adaptations-close"
+                        type="button"
+                        aria-label="Fechar adaptações"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+                <div
+                    class="adaptations-content"
+                    id="adaptations-content"
+                >
+                    <!-- As adaptações serão inseridas pelo JavaScript -->
+                </div>
+
+            </div>
+
+        </div>
 
     </main>
-  
-<script src="data/girls.js"></script>
-<script src="script.js"></script>
+
+    <script src="data/girls.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
-
