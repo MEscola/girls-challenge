@@ -63,7 +63,7 @@ body {
     width: 100%;
     max-width: 600px;
 
-    min-height: 100vh;
+    height: 100%;
     min-height: 100svh;
 
     display: flex;
@@ -80,7 +80,6 @@ body {
 .app-header {
     position: relative;
     flex-shrink: 0;
-
     text-align: center;
 }
 
@@ -112,8 +111,8 @@ h1,
 .rules-link {
     position: absolute;
 
-    top: 0;
-    right: 0;
+    top: 8px;
+    right: 6px;
 
     color: #888;
 
@@ -132,7 +131,6 @@ h1,
 .rules-link:focus-visible {
     color: var(--accent);
 }
-
 
 .app-header h1 {
     color: var(--accent);
@@ -444,22 +442,10 @@ h1,
    ESTADOS
 ======================================== */
 
-/*
-   Enquanto estiver sorteando,
-   o botão fica indisponível.
-*/
-
 .draw-button:disabled {
     opacity: 0.4;
     cursor: not-allowed;
 }
-
-
-/*
-   Estado de sorteio.
-   O JS adiciona .is-drawing
-   à tela.
-*/
 
 .is-drawing .draw-button {
     opacity: 0.4;
@@ -468,11 +454,6 @@ h1,
 .is-drawing .timer-container {
     animation: timerPulse 1s ease-in-out infinite;
 }
-
-
-/*
-   Resultado.
-*/
 
 .show-result .timer-container {
     display: none;
@@ -508,11 +489,6 @@ h1,
     }
 }
 
-
-/*
-   Entrada do resultado.
-*/
-
 .show-result .result-container {
     animation: resultReveal 0.6s ease-out both;
 }
@@ -540,11 +516,6 @@ h1,
    IMPACTO DO RESULTADO
 ======================================== */
 
-/*
-   Momento em que o 00:00
-   vira o nome da Girl.
-*/
-
 .timer-container.reveal-name .timer {
     animation: resultImpact 0.6s ease forwards;
 }
@@ -566,11 +537,6 @@ h1,
         opacity: 1;
     }
 }
-
-
-/*
-   Nome da Girl dentro do timer.
-*/
 
 .timer.girl-result {
     color: var(--accent);
@@ -607,7 +573,7 @@ button:focus-visible {
     }
 
     .timer-container {
-        width: min(65vw, 280px);
+        width: min(65vw, 320px);
     }
 
     .draw-status {
@@ -653,6 +619,14 @@ button:focus-visible {
 
     .screen {
         padding: 40px 32px 32px;
+    }
+
+    .timer-container {
+        width: min(55vh, 340px);
+    }
+
+    .timer {
+        font-size: clamp(4rem, 12vh, 6.5rem);
     }
 
     .draw-button {
