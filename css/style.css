@@ -71,6 +71,7 @@ body {
 ======================================== */
 
 .app-header {
+    position: relative;
     text-align: center;
 }
 
@@ -91,6 +92,30 @@ h1,
     font-family: "Oswald", sans-serif;
 }
 
+/* Link para as regras */
+
+.rules-link {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+
+    color: #888;
+    font-family: "Oswald", sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.rules-link:hover,
+.rules-link:active,
+.rules-link:focus-visible {
+    color: var(--accent);
+}
+
 .app-header h1 {
     color: var(--accent);
     font-size: clamp(2rem, 10vw, 3.5rem);
@@ -98,7 +123,6 @@ h1,
     letter-spacing: 0.08em;
     line-height: 0.9;
 }
-
 
 /* ========================================
    DRAW AREA
@@ -205,12 +229,25 @@ h1,
 }
 
 .result-label {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    font-family: "Oswald", sans-serif;
     font-size: 0.7rem;
     font-weight: 900;
     letter-spacing: 0.22em;
     color: #6b6b6b;
     margin-bottom: 12px;
+}
+
+.result-label::before,
+.result-label::after {
+    content: "";
+    width: 35px;
+    height: 1px;
+    background: #333;
 }
 
 .girl-name {
@@ -320,6 +357,7 @@ h1,
 }
 
 .draw-button:hover {
+    background: var(--accent);
     background: #fff;
 }
 
@@ -369,6 +407,12 @@ h1,
 
 .show-result .result-container {
     display: block;
+}
+
+.show-result .girl-name {
+    text-shadow:
+        0 0 10px rgba(255, 77, 28, 0.25),
+        0 0 25px rgba(255, 77, 28, 0.15);
 }
 
 

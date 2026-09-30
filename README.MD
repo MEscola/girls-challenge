@@ -1,21 +1,31 @@
 # Girls Challenge
 
-Um pequeno aplicativo para sorteio de WODs das Girls do CrossFit.
+Um pequeno aplicativo para sorteio de WODs das **Girls do CrossFit**.
 
-A ideia surgiu como uma forma divertida de definir a "punição" para quem faltar ao treino. Ao clicar em **FALTOU?**, o aplicativo inicia uma contagem regressiva e sorteia aleatoriamente uma Girl e seu respectivo WOD.
+A ideia surgiu como uma forma divertida de definir a "punição" para quem faltar ao treino. Ao clicar em **FALTOU?**, o aplicativo inicia uma contagem regressiva e, ao final, sorteia aleatoriamente uma Girl e seu respectivo WOD.
+
+O aplicativo também possui uma seção de **regras**, explicando quando a falta gera punição e quais situações são consideradas falta abonada.
 
 ## Como funciona
 
 1. Clique em **FALTOU?**
-2. O aplicativo inicia uma contagem de 3 segundos.
-3. O círculo de progresso avança e muda de cinza para laranja.
-4. Ao final da contagem, uma Girl é sorteada.
-5. O WOD sorteado é exibido na tela.
+2. O aplicativo inicia uma contagem regressiva de 3 segundos.
+3. O círculo de progresso acompanha a contagem e muda de cinza para laranja.
+4. Ao final da contagem, uma Girl é sorteada aleatoriamente.
+5. O nome da Girl e seu WOD são exibidos na tela.
 6. O resultado pode ser copiado para compartilhar no WhatsApp.
+
+## Regras
+
+A seção de regras apresenta a dinâmica do desafio de forma simples:
+
+* **Faltou sem motivo justo?** Sorteia uma Girl.
+* Existem situações de **falta abonada**, nas quais não há punição.
+* As regras ficam disponíveis diretamente no aplicativo para consulta antes do sorteio.
 
 ## Acesse o aplicativo
 
-[**ABRIR GIRLS CHALLENGE**](https://mescola.github.io/girls-challenge/)
+**[ABRIR GIRLS CHALLENGE](https://mescola.github.io/girls-challenge/)**
 
 ## Tecnologias
 
@@ -32,8 +42,10 @@ O projeto não utiliza banco de dados, backend ou framework.
 ```text
 girls-challenge/
 ├── index.html
-├── style.css
 ├── script.js
+├── css/
+│   ├── style.css
+│   └── regras.css
 ├── data/
 │   └── girls.js
 └── assets/
@@ -41,12 +53,23 @@ girls-challenge/
     └── sounds/
 ```
 
-## Projeto
+## Sobre o projeto
 
-Este é um MVP desenvolvido para testar a ideia e a experiência de uso diretamente no box de CrossFit.
+O **Girls Challenge** é um MVP criado para testar uma ideia simples diretamente no contexto do box de CrossFit.
 
-O sorteio é realizado no navegador e não possui persistência de dados.
+O projeto reúne:
+
+* Sorteio aleatório das Girls e seus respectivos WODs
+* Contagem regressiva visual
+* Indicador de progresso em SVG
+* Exibição do resultado do sorteio
+* Cópia do resultado para compartilhamento
+* Seção de regras do desafio
+* Regras de falta abonada
+* Interface responsiva para uso em dispositivos móveis
+
+O sorteio acontece inteiramente no navegador. Não há cadastro, banco de dados ou registro dos resultados. Cada sorteio é realizado apenas durante a sessão atual da página.
 
 ## Publicação
 
-O aplicativo está hospedado no GitHub Pages.
+O aplicativo está publicado utilizando **GitHub Pages**.
